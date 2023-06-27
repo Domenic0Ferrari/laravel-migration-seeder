@@ -15,6 +15,10 @@ class PageController extends Controller
 
     public function train()
     {
-        return view('train');
+        // con la condizione where prendo tutti i treni che non sono stati cancellati
+        $trains = Train::where('deleted', 0)->get();
+        return view('train', [
+            'trains' => $trains,
+        ]);
     }
 }
